@@ -1,10 +1,7 @@
 {
     "name": "Callabra/API",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Callabra/API/archive/master.zip"
-        }
-    ],
-
+    "dist": {
+        "url": "https://github.com/Callabra/API/archive/master.zip",
+        "type": "zip"
+    }
 }
