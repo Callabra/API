@@ -1,12 +1,14 @@
 <?
 
-class CallabraInvoice {
+class Invoice {
 
 	var $account;
 	var $items;
 	var $coupon;
 
 	function account($id) {
+
+			Debug::log("test","tEST");
 
 	}
 

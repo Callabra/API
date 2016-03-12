@@ -3,5 +3,11 @@
     "dist": {
         "url": "https://github.com/Callabra/API/archive/master.zip",
         "type": "zip"
+    },
+    "autoload": {
+        "classmap": [
+            "vendor/Callabra/API/Callabra.php",
+            "vendor/Callabra/API/Invoice.php"
+        ]
     }
 }

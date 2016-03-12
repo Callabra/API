@@ -1,7 +1,7 @@
 <?
 namespace {
 
-	use Callabra\CallabraInvoice;
+	use Callabra\Invoice;
 
 
 	class Callabra {
