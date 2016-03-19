@@ -108,10 +108,6 @@ namespace {
 
 			 self::$parameters = null; // reset parameters after each send request
 
-			 #Debug::log($result,"RAWRESPONSE"); 
-
-			 #print_r($result);
-
 			 return json_decode($result);
 		}
 
@@ -178,7 +174,6 @@ namespace {
 		public static function save($module, $id, array $parameters)
 		{
 
-			#print "saveCallabra";
 
 			self::setModule($module);
 			self::setAction("save");
@@ -196,10 +191,9 @@ namespace {
 		{
 			self::setModule($module);
 			self::setAction("search");
-			self::addParameters($module,$parameters);
 
-			self::add("orderBy",$orderBy);
-			self::add("orderDir",$orderDir);	
+			self::addParameters($module,array('WHERE'=>$parameters));
+			self::addParameters($module,array('orderBy'=>$orderBy,'orderDir'=>$orderDir));	
 			
 
 			$result = self::send();
@@ -212,7 +206,6 @@ namespace {
 		public static function details($module, $id)
 		{
 
-			#Debug::log("ID",$id);
 
 			self::setModule($module);
 			self::setAction("get");
@@ -239,7 +232,6 @@ namespace {
 		public static function invoice(string $account, array $invoice, string $coupon = null)
 		{
 
-			#Debug::log("ID",$id);
 
 			self::setModule("invoices");
 			self::setAction("invoice");
@@ -258,7 +250,6 @@ namespace {
 		public static function charge(array $parameters, array $invoice)
 		{
 
-			#Debug::log("ID",$id);
 
 			self::setModule("payments");
 			self::setAction("charge");
@@ -281,8 +272,6 @@ namespace {
 
 			$result = self::send();
 
-			#Debug::log($result,"result@details");
-
 			return $result;
 
 
@@ -298,8 +287,6 @@ namespace {
 			self::addParameter($module,"related_id",$related_id);
 
 			$result = self::send();
-
-			#Debug::log($result,"result@relation");
 
 			return $result;
 
@@ -317,7 +304,6 @@ namespace {
 
 			$result = self::send();
 
-			#Debug::log($result,"result@validate");
 
 			return $result;
 
@@ -356,8 +342,6 @@ namespace {
 
 			$result = self::send();
 
-			#Debug::log($result,"result@details");
-
 			return $result;
 
 
@@ -370,8 +354,6 @@ namespace {
 
 
 			$result = self::send();
-
-			#Debug::log($result,"result@details");
 
 			return $result;	
 		}

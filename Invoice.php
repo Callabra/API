@@ -8,7 +8,7 @@ class Invoice {
 
 	function account($id) {
 
-			Debug::log("test","tEST");
+			#Debug::log("test","tEST");
 
 	}
 
