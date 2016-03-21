@@ -4,10 +4,13 @@
         "url": "https://github.com/Callabra/API/archive/master.zip",
         "type": "zip"
     },
-    "autoload": {
-        "classmap": [
-            "Callabra.php",
-            "Invoice.php"
-        ]
-    }
+    // "autoload": {
+    //     "classmap": [
+    //         "Callabra.php",
+    //         "Invoice.php"
+    //     ]
+    // }
+  "autoload": {
+    "psr-4": { "Callabra\\" : "lib/" }
+  },
 }
