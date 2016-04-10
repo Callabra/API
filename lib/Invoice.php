@@ -1,5 +1,7 @@
 <?
 
+namespace Callabra;
+
 class Invoice {
 
 	var $account;

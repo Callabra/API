@@ -27,8 +27,6 @@ class Callabra
 
 		$endpoint = $endpoint . "/" . self::$module . "/" . self::$action . "/";
 
-		#Debug::log($endpoint,"endpoint");
-
 		return $endpoint;
 	}
 
@@ -130,14 +128,13 @@ class Callabra
 
 	}
 
+
+
 	public static function create($module, array $parameters)
 	{
 
-		#print "saveCallabra";
-
 		self::setModule($module);
 		self::setAction("create");
-		#self::addParameter($module, "id" , $id);
 		self::addParameters($module, $parameters);
 
 		$result = self::send();
@@ -169,22 +166,7 @@ class Callabra
 
 
 
-	/* DEPRECATED - use create or update instead */
-	public static function save($module, $id, array $parameters)
-	{
 
-
-		self::setModule($module);
-		self::setAction("save");
-		self::addParameter($module, "id" , $id);
-		self::addParameters($module, $parameters);
-
-		$result = self::send();
-
-		
-
-		return $result;
-	}
 
 	public static function search($module, array $parameters, $orderBy = 'date_created', $orderDir = 'desc')
 	{
@@ -215,6 +197,44 @@ class Callabra
 		return $result;			
 	}
 
+
+	public static function validate($module, $parameters, $required = false, $all = false) 
+	{
+		self::setModule($module);
+		self::setAction("validate");
+		#self::addParameter($module, "required" , $required);
+		self::addParameter($module, "required" , true);
+		self::addParameter($module, "all" , $all);
+		self::addParameters($module, $parameters);
+
+		$result = self::send();
+
+
+		return $result;
+
+	}
+
+
+
+/* ?????? */
+
+	/* DEPRECATED - use create or update instead */
+	public static function save($module, $id, array $parameters)
+	{
+
+
+		self::setModule($module);
+		self::setAction("save");
+		self::addParameter($module, "id" , $id);
+		self::addParameters($module, $parameters);
+
+		$result = self::send();
+
+		
+
+		return $result;
+	}
+	
 	public static function coupon($code) {
 
 		self::setModule("coupons");
@@ -292,21 +312,7 @@ class Callabra
 
 	}
 
-	public static function validate($module, $parameters, $required = false, $all = false) 
-	{
-		self::setModule($module);
-		self::setAction("validate");
-		#self::addParameter($module, "required" , $required);
-		self::addParameter($module, "required" , true);
-		self::addParameter($module, "all" , $all);
-		self::addParameters($module, $parameters);
 
-		$result = self::send();
-
-
-		return $result;
-
-	}
 
 	public static function email($to, $subject, $body)
 	{
