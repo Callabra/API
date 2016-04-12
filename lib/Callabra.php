@@ -324,8 +324,6 @@ class Callabra
 
 		$result = self::send();
 
-		Debug::log($result,"result@details");
-
 		return $result;
 
 	}
