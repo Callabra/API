@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Callabra;
 
@@ -25,3 +25,5 @@ class Plan extends Callabra {
 
 
 }
+
+?>

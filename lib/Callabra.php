@@ -1,4 +1,5 @@
-<?
+<?php
+
 namespace Callabra;
 
 
@@ -16,8 +17,6 @@ class Callabra
 
 	public static function endpoint()
 	{
-
-
 
 		if(isset($_SERVER['PRODUCTION'])) {
 			$endpoint = "https://api.callabra.com";
