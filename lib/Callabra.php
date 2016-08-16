@@ -167,7 +167,11 @@ class Callabra
 
 
 
-	public static function search($module, array $parameters, $orderBy = 'date_created', $orderDir = 'desc')
+	public static function search($module, 
+		array $parameters, 
+		$orderBy = 'date_created', 
+		$orderDir = 'desc', 
+		$bookmark = 0)
 	{
 		self::setModule($module);
 		self::setAction("search");
