@@ -171,14 +171,14 @@ class Callabra
 		array $parameters, 
 		$orderBy = 'date_created', 
 		$orderDir = 'desc', 
-		$bookmark = 0)
+		$bookmark = 0,
+		$limit = 50)
 	{
 		self::setModule($module);
 		self::setAction("search");
 
 		self::addParameters($module,array('WHERE'=>$parameters));
-		self::addParameters($module,array('orderBy'=>$orderBy,'orderDir'=>$orderDir));	
-		
+		self::addParameters($module,array('orderBy'=>$orderBy,'orderDir'=>$orderDir,'bookmark'=>$bookmark,'limit'=>$limit));	
 
 		$result = self::send();
 
