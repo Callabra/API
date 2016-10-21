@@ -162,6 +162,19 @@ class Callabra
 		return $result;
 	}
 
+	public static function delete($module, $id)
+	{
+
+		self::setModule($module);
+		self::setAction("delete");
+		self::addParameter($module, "id" , $id);
+
+		$result = self::send();
+
+		
+
+		return $result;
+	}
 
 
 
