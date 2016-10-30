@@ -8,6 +8,7 @@ class Callabra
 	
 	public static $instance;
 	public static $key;
+	public static $test;
 
 	public static $module;
 	public static $action;
@@ -18,10 +19,10 @@ class Callabra
 	public static function endpoint()
 	{
 
-		if(isset($_SERVER['PRODUCTION'])) {
-			$endpoint = "https://api.callabra.com";
+		if(self::$test == true) {
+			$endpoint = "https://api.klevva.com";
 		} else {
-			$endpoint = "http://api.klevva.com";
+			$endpoint = "https://api.callabra.com";
 		}
 
 		$endpoint = $endpoint . "/" . self::$module . "/" . self::$action . "/";
@@ -38,6 +39,11 @@ class Callabra
 	public static function setKey($key)
 	{
 		self::$key = $key;
+	}
+
+	public static function setTestMode($test)
+	{
+		self::$test = $test;
 	}
 
 	public static function setModule($module)
