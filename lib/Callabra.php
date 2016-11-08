@@ -8,6 +8,7 @@ class Callabra
 	
 	public static $instance;
 	public static $key;
+	public static $token;
 	public static $test;
 
 	public static $module;
@@ -39,6 +40,11 @@ class Callabra
 	public static function setKey($key)
 	{
 		self::$key = $key;
+	}
+
+	public static function setToken($token)
+	{
+		self::$token = $token;
 	}
 
 	public static function setTestMode($test)
