@@ -102,6 +102,10 @@ class Callabra
 		self::add("INSTANCE",self::$instance);
 		self::add("KEY",self::$key);
 
+		if(self::$token) {
+			self::add("TOKEN",self::$token);
+		}
+
 		//open connection
 		$ch = curl_init();
 
