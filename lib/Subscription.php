@@ -57,6 +57,33 @@ class Subscription extends Callabra  {
 	}
 
 
+	public static function suspend($subscription)
+	{
+
+		self::setModule("subscriptions");
+		self::setAction("suspend");
+
+		self::addParameter("subscriptions", "id" , $subscription);
+
+		$result = self::send();
+
+		return $result;
+
+	}
+
+	public static function refund($subscription)
+	{
+
+		self::setModule("subscriptions");
+		self::setAction("refund");
+
+		self::addParameter("subscriptions", "id" , $subscription);
+
+		$result = self::send();
+
+		return $result;
+
+	}
 
 } // end class Subscription
 
