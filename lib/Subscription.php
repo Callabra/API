@@ -8,6 +8,20 @@ class Subscription extends Callabra  {
 	// var $plan;
 	// var $coupon;
 
+	public static function get($id)
+	{
+
+		self::setModule("subscriptions");
+		self::setAction("get");
+
+
+		self::addParameter("subscriptions","id",$id);
+
+		$result = self::send();
+
+		return $result;			
+	}
+
 
 	public static function create($account, $plan, $quantity = 1, $coupon = null, $trial_end = null)
 	{
