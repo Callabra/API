@@ -41,33 +41,4 @@ class Field extends Callabra {
 
 }
 
-?><?php
-
-namespace Callabra;
-
-class Field {
-
-	function meta($field) {
-
-		self::setModule("fields");
-		self::setAction("meta");
-
-
-		self::addParameter("fields","field",$field);
-
-		$result = self::send();
-
-		return $result;	
-
-	}
-
-
-
-
-
-
-
-
-}
-
 ?>
