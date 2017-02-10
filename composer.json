@@ -5,8 +5,7 @@
         "type": "zip"
     },
   "autoload": {
-            "psr-0": {
-            "Callabra": "lib/"
-        }
+  	"psr-0": { "Callabra": "lib/"},
+    "psr-4": { "Callabra\\" : "lib/" }
   }
 }
