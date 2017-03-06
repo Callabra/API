@@ -5,7 +5,7 @@ namespace Callabra;
 class Account extends Callabra  {
 
 
-	public static function get($id)
+	public static function details($id)
 	{
 
 		self::setModule("accounts");
@@ -20,13 +20,14 @@ class Account extends Callabra  {
 	}	
 
 
-	public static function subscriptions($id,$status) {
+	public static function subscriptions($id,$status,$plan) {
 
 		self::setModule("subscriptions");
 		self::setAction("search");
 
 		$parameters['account'] = $id;
 		$parameters['status'] = $status;
+		$parameters['plan'] = $plan;
 
 		self::addParameters("subscriptions",array('WHERE'=>$parameters));
 

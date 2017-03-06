@@ -4,6 +4,20 @@ namespace Callabra;
 
 class Subscription extends Callabra  {
 
+	public static function details($id)
+	{
+
+		self::setModule("subscriptions");
+		self::setAction("get");
+
+
+		self::addParameter("subscriptions","id",$id);
+
+		$result = self::send();
+
+		return $result;			
+	}
+
 	public static function create($account, $plan, $quantity = 1, $coupon = null, $trial_end = null)
 	{
 
@@ -22,24 +36,6 @@ class Subscription extends Callabra  {
 		return $result;
 
 	}
-
-	public static function update($id, $amount, $quantity = 1)
-	{
-
-		self::setModule("subscriptions");
-		self::setAction("update");
-
-		self::addParameter("subscriptions", "amount" , $amount);
-		self::addParameter("subscriptions", "quantity" , $quantity);
-
-
-		$result = self::send();
-
-		return $result;
-
-	}
-
-
 
 	public static function renew($subscription)
 	{
@@ -97,9 +93,6 @@ class Subscription extends Callabra  {
 		return $result;
 
 	}
-
-
-
 
 } // end class Subscription
 
