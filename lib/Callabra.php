@@ -163,8 +163,6 @@ class Callabra
 	public static function update($module, $id, array $parameters, $all = false)
 	{
 
-		#print "saveCallabra";
-
 		self::setModule($module);
 		self::setAction("update");
 		self::addParameter($module, "id" , $id);
