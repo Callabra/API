@@ -18,17 +18,17 @@ class Subscription extends Callabra  {
 		return $result;			
 	}
 
-	public static function create($account, $plan, $quantity = 1, $coupon = null, $trial_end = null)
+	public static function update($id, $amount)
 	{
 
 		self::setModule("subscriptions");
-		self::setAction("create");
+		self::setAction("update");
 
-		self::addParameter("subscriptions", "account" , $account);
-		self::addParameter("subscriptions", "plan" , $plan);
-		self::addParameter("subscriptions", "quantity" , $quantity);
-		self::addParameter("subscriptions", "coupon" , $coupon);
-		self::addParameter("subscriptions", "trial_end" , $trial_end);
+		self::addParameter("subscriptions", "id" , $id);
+		self::addParameter("subscriptions", "amount" , $amount);
+		#self::addParameter("subscriptions", "quantity" , $quantity);
+		#self::addParameter("subscriptions", "coupon" , $coupon);
+
 
 
 		$result = self::send();
@@ -36,6 +36,27 @@ class Subscription extends Callabra  {
 		return $result;
 
 	}
+
+	public static function update($id, $amount)
+	{
+
+		self::setModule("subscriptions");
+		self::setAction("update");
+
+		self::addParameter("subscriptions", "id" , $id);
+		self::addParameter("subscriptions", "amount" , $amount);
+		#self::addParameter("subscriptions", "quantity" , $quantity);
+		#self::addParameter("subscriptions", "coupon" , $coupon);
+
+
+
+		$result = self::send();
+
+		return $result;
+
+	}
+
+
 
 	public static function renew($subscription)
 	{
