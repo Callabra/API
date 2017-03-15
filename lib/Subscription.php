@@ -18,17 +18,17 @@ class Subscription extends Callabra  {
 		return $result;			
 	}
 
-	public static function update($id, $amount)
+	public static function create($account, $plan, $setup_fee = null, $quantity = 1, $coupon = null, $trial_end = null)
 	{
 
 		self::setModule("subscriptions");
-		self::setAction("update");
+		self::setAction("create");
 
-		self::addParameter("subscriptions", "id" , $id);
-		self::addParameter("subscriptions", "amount" , $amount);
-		#self::addParameter("subscriptions", "quantity" , $quantity);
-		#self::addParameter("subscriptions", "coupon" , $coupon);
-
+		self::addParameter("subscriptions", "account" , $account);
+		self::addParameter("subscriptions", "plan" , $plan);
+		self::addParameter("subscriptions", "quantity" , $quantity);
+		self::addParameter("subscriptions", "coupon" , $coupon);
+		self::addParameter("subscriptions", "trial_end" , $trial_end);
 
 
 		$result = self::send();
@@ -54,9 +54,7 @@ class Subscription extends Callabra  {
 
 		return $result;
 
-	}
-
-
+	}	
 
 	public static function renew($subscription)
 	{
