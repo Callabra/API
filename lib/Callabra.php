@@ -101,6 +101,7 @@ class Callabra
 	{
 		self::add("INSTANCE",self::$instance);
 		self::add("KEY",self::$key);
+		self::add("ORIGIN", $_SERVER["REQUEST_URI"]);
 
 		if(self::$token) {
 			self::add("TOKEN",self::$token);
