@@ -38,7 +38,7 @@ class Subscription extends Callabra  {
 	}
 
 
-	public static function create($account, $plan, $coupon = null, $quantity = 1, $setup_fee = null, $trial_end = null)
+	public static function create($account, $plan, $coupon = null, $quantity = 1, $setup_fee = null, $trial_end = null, $order_id = null)
 	{
 
 		self::setModule("subscriptions");
@@ -49,6 +49,7 @@ class Subscription extends Callabra  {
 		self::addParameter("subscriptions", "quantity" , $quantity);
 		self::addParameter("subscriptions", "coupon" , $coupon);
 		self::addParameter("subscriptions", "trial_end" , $trial_end);
+		self::addParameter("subscriptions", "order_id" , $order_id);
 
 
 		$result = self::send();
