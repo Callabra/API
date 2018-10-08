@@ -279,7 +279,7 @@ class Callabra
 
 	}
 
-	public static function invoice(string $account, array $invoice, string $coupon = null)
+	public static function invoice(string $account, array $invoice)
 	{
 
 
@@ -288,7 +288,7 @@ class Callabra
 		#self::addParameters("payments", $parameters);
 		self::addParameter("invoices","account",$account);
 		self::addParameters("invoices", $invoice);
-		self::addParameter("coupon",$coupon);
+		#self::addParameter("coupon",$coupon);
 
 		$result = self::send();
 
