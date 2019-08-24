@@ -124,6 +124,47 @@ class Callabra
 		 return json_decode($result);
 	}
 
+	public static function sendFile($module,$field,$id,$path)
+	{
+		self::add("INSTANCE",self::$instance);
+		self::add("KEY",self::$key);
+		self::add("ORIGIN", $_SERVER["REQUEST_URI"]);
+
+		if(self::$token) {
+			self::add("TOKEN",self::$token);
+		}
+
+		//open connection
+		$ch = curl_init();
+
+
+		$file = curl_file_create($path, mime_content_type($path) ,$field);
+
+		$data = array(
+			"INSTANCE" => self::$instance,
+			"KEY" => self::$key,
+			"ORIGIN" => $_SERVER['REQUEST_URI'],
+			#"PARAMETERS" => self::$parameters['PARAMETERS'],
+			"ID" => $id,
+			"FILE" => $file
+
+		);
+
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, self::endpoint() );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch,CURLOPT_POST, count($data) );
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $data );
+
+		//execute post
+		 $result = curl_exec($ch);
+
+		 self::$parameters = null; // reset parameters after each send request
+
+		 return json_decode($result);
+	}
+
 	public static function authenticate($module, $email, $password)
 	{
 
@@ -327,7 +368,14 @@ class Callabra
 
 	}
 
+
+	/* DEPRECATED - use attach instead */
 	public static function relation($module, $id, $related_module, $related_id) 
+	{
+		return self::attach($module, $id, $related_module, $related_id);
+	}
+
+	public static function attach($module, $id, $related_module, $related_id) 
 	{
 
 		self::setModule($module);
@@ -344,7 +392,28 @@ class Callabra
 	}
 
 
+	public static function detach($module, $id, $related_module, $related_id) 
+	{
+		self::setModule($module);
+		self::setAction("relation");
+		self::addParameter($module,"id",$id);
+		self::addParameter($module,"related_module",$related_module);
+		self::addParameter($module,"related_id",$related_id);
 
+		$result = self::send();
+
+		return $result;
+
+	}
+
+
+	/**
+	 * [sends an email via Callabra - DEPRECATED - USE Email class instead ]
+	 * @param  [type] $to      [email address of recipient ($from is set via Callabra settings)]
+	 * @param  [type] $subject [subject of email]
+	 * @param  [type] $body    [body of the email]
+	 * @return [type]          [description]
+	 */
 	public static function email($to, $subject, $body)
 	{
 		self::setModule("accounts");
@@ -392,7 +461,18 @@ class Callabra
 		return $result;	
 	}
 
+	public static function file($module,$field,$id,$path) {
 
+		self::setModule($module);
+		self::setAction("file");
+
+		self::addParameter($module,"field",$field);
+		self::addParameter($module,"id",$id);
+		
+		$result = self::sendFile($module,$field,$id,$path);
+
+		return $result;	
+	}
 
 } // end class Callabra
 
