@@ -372,14 +372,9 @@ class Callabra
 	/* DEPRECATED - use attach instead */
 	public static function relation($module, $id, $related_module, $related_id) 
 	{
-		return self::attach($module, $id, $related_module, $related_id);
-	}
-
-	public static function attach($module, $id, $related_module, $related_id) 
-	{
 
 		self::setModule($module);
-		self::setAction("attach");
+		self::setAction("relation");
 		self::addParameter($module,"id",$id);
 		self::addParameter($module,"related_module",$related_module);
 		self::addParameter($module,"related_id",$related_id);
@@ -391,14 +386,28 @@ class Callabra
 
 	}
 
+	public static function attach($module, $id, $related_module, array $related_ids) 
+	{
+		self::setModule($module);
+		self::setAction("attach");
+		self::addParameter($module,"id",$id);
+		self::addParameter($module,"related_module",$related_module);
+		self::addParameter($module,"related_ids",$related_ids);
 
-	public static function detach($module, $id, $related_module, $related_id) 
+		$result = self::send();
+
+		return $result;
+
+	}
+
+
+	public static function detach($module, $id, $related_module, array $related_ids) 
 	{
 		self::setModule($module);
 		self::setAction("detach");
 		self::addParameter($module,"id",$id);
 		self::addParameter($module,"related_module",$related_module);
-		self::addParameter($module,"related_id",$related_id);
+		self::addParameter($module,"related_ids",$related_ids);
 
 		$result = self::send();
 
