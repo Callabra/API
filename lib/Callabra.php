@@ -379,7 +379,7 @@ class Callabra
 	{
 
 		self::setModule($module);
-		self::setAction("relation");
+		self::setAction("attach");
 		self::addParameter($module,"id",$id);
 		self::addParameter($module,"related_module",$related_module);
 		self::addParameter($module,"related_id",$related_id);
@@ -395,7 +395,7 @@ class Callabra
 	public static function detach($module, $id, $related_module, $related_id) 
 	{
 		self::setModule($module);
-		self::setAction("relation");
+		self::setAction("detach");
 		self::addParameter($module,"id",$id);
 		self::addParameter($module,"related_module",$related_module);
 		self::addParameter($module,"related_id",$related_id);
