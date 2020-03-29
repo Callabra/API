@@ -138,7 +138,7 @@ class Callabra
 		$ch = curl_init();
 
 
-		$file = curl_file_create($path, mime_content_type($path) ,$field);
+		#$file = curl_file_create($path, mime_content_type($path) ,$field);
 
 		$data = array(
 			"INSTANCE" => self::$instance,
