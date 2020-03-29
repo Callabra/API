@@ -150,6 +150,8 @@ class Callabra
 
 		);
 
+		\Debug::log($data,"CURL POST DATA");
+
 
 		//set the url, number of POST vars, POST data
 		curl_setopt($ch,CURLOPT_URL, self::endpoint() );
@@ -159,6 +161,8 @@ class Callabra
 
 		//execute post
 		 $result = curl_exec($ch);
+
+		 \Debug::log($result,"curl result");
 
 		 self::$parameters = null; // reset parameters after each send request
 
