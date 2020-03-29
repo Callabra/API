@@ -157,7 +157,7 @@ class Callabra
 		curl_setopt($ch,CURLOPT_URL, self::endpoint() );
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch,CURLOPT_POST, count($data) );
-		curl_setopt($ch,CURLOPT_POSTFIELDS, $data );
+		curl_setopt($ch,CURLOPT_POSTFIELDS, self::encode($data) );
 
 		//execute post
 		 $result = curl_exec($ch);
