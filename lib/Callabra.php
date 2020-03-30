@@ -138,7 +138,7 @@ class Callabra
 		$ch = curl_init();
 
 
-		#$file = curl_file_create($path, mime_content_type($path) ,$field);
+		$file = curl_file_create($path, mime_content_type($path) ,$field);
 
 		$data = array(
 			"INSTANCE" => self::$instance,
@@ -157,7 +157,8 @@ class Callabra
 		curl_setopt($ch,CURLOPT_URL, self::endpoint() );
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch,CURLOPT_POST, count($data) );
-		curl_setopt($ch,CURLOPT_POSTFIELDS, self::encode($data) );
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $data );
+		#curl_setopt($ch,CURLOPT_POSTFIELDS, self::encode($data) );
 
 		//execute post
 		 $result = curl_exec($ch);
