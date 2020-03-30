@@ -150,6 +150,7 @@ class Callabra
 
 		);
 
+		\Debug::$dump = true;
 		\Debug::log($values,"CURL POST DATA");
 
 
