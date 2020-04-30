@@ -4,8 +4,7 @@
     "description": "API for interacting remotely with the Callabra CRM.",
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "Callabra\\API\\": "lib/"
-        }
+  		"psr-0": { "Callabra": "lib/"},
+    	"psr-4": { "Callabra\\" : "lib/" }
     }   
 }
