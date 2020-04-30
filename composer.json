@@ -1,11 +1,5 @@
 {
     "name": "callabra/api",
-    "dist": {
-        "url": "https://github.com/Callabra/API/archive/master.zip",
-        "type": "zip"
-    },
-  "autoload": {
-  	"psr-0": { "Callabra": "lib/"},
-    "psr-4": { "Callabra\\" : "lib/" }
-  }
+    "type": "library",
+    "description": "API for interacting remotely with the Callabra CRM.",
 }
