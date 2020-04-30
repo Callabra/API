@@ -2,4 +2,5 @@
     "name": "callabra/api",
     "type": "library",
     "description": "API for interacting remotely with the Callabra CRM.",
+    "license": "MIT",
 }
