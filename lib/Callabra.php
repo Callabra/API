@@ -21,7 +21,7 @@ class Callabra
 	{
 
 		if(self::$test == true) {
-			$endpoint = "https://api.klevva.com";
+			$endpoint = "https://api.test.callabra.com";
 		} else {
 			$endpoint = "https://api.callabra.com";
 		}
