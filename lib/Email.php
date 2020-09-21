@@ -20,7 +20,5 @@ class Email extends Callabra  {
 		return $result;			
 	}	
 
-
-
 }
 ?>
