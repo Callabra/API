@@ -19,7 +19,18 @@ class Invoice {
 
 	}
 
+	function pastDue(string $id) {
 
+		self::setModule("invoices");
+		self::setAction("pastDue");
+
+		self::addParameter("invoices", "id" , $id);
+
+		$result = self::send();
+
+		return $result;
+
+	}
 
 
 
