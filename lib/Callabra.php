@@ -488,6 +488,18 @@ class Callabra
 		return $result;	
 	}
 
+	public static function setting($group,$name=null) {
+		self::setModule('system');
+		self::setAction('setting');
+
+		self::addParameter('system',"group",$group);
+		self::addParameter('system',"name",$name);
+
+		$result = self::send();
+
+		return $result;	
+	}
+
 } // end class Callabra
 
 
