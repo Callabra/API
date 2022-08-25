@@ -2,7 +2,7 @@
 
 namespace Callabra;
 
-class Account extends Callabra  {
+class Account extends Api  {
 
 
 	public static function details($id)

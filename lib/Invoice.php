@@ -2,7 +2,7 @@
 
 namespace Callabra;
 
-class Invoice extends Callabra {
+class Invoice extends Api {
 
 	var $account;
 	var $items;

@@ -2,7 +2,7 @@
 
 namespace Callabra;
 
-class Field extends Callabra {
+class Field extends Api {
 
 	function meta($module,$field) {
 

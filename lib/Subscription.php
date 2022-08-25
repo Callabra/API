@@ -2,7 +2,8 @@
 
 namespace Callabra;
 
-class Subscription extends Callabra  {
+class Subscription extends Api  {
+	
 
 	public static function details($id)
 	{
@@ -46,8 +47,6 @@ class Subscription extends Callabra  {
 
 		self::addParameter("subscriptions", "account" , $account);
 		self::addParameter("subscriptions", "plans" , $plans);
-		#self::addParameter("subscriptions", "quantity" , $quantity);
-		#self::addParameter("subscriptions", "coupon" , $coupon);
 		self::addParameter("subscriptions", "trial_end" , $trial_end);
 
 

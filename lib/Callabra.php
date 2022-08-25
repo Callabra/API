@@ -2,10 +2,8 @@
 
 namespace Callabra;
 
+class Api {
 
-class Callabra 
-{
-	
 	public static $instance;
 	public static $key;
 	public static $token;
@@ -14,8 +12,7 @@ class Callabra
 	public static $module;
 	public static $action;
 
-	public static $parameters;
-
+	public static $parameters;	
 
 	public static function endpoint()
 	{
@@ -30,7 +27,6 @@ class Callabra
 
 		return $endpoint;
 	}
-
 
 	public static function setInstance($instance)
 	{
@@ -191,6 +187,12 @@ class Callabra
 	}
 
 
+}
+
+
+
+class Callabra extends Api
+{
 
 	public static function create($module, array $parameters)
 	{
@@ -236,10 +238,6 @@ class Callabra
 
 		return $result;
 	}
-
-
-
-
 
 	public static function search($module, 
 		array $parameters, 

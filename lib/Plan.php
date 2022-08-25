@@ -2,7 +2,7 @@
 
 namespace Callabra;
 
-class Plan extends Callabra {
+class Plan extends Api {
 
 	public static function coupon($plan = null, $coupon = null)
 	{

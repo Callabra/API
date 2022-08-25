@@ -2,7 +2,7 @@
 
 namespace Callabra;
 
-class Email extends Callabra  {
+class Email extends Api  {
 
 
 	public static function create($to, $subject, $body )
