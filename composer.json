@@ -1,7 +1,7 @@
 {
     "name": "callabra/api",
     "type": "library",
-    "description": "API for interacting remotely with Callabra CRM.",
+    "description": "API for interacting remotely with Callabra",
     "homepage": "https://www.callabra.com",
     "license": "MIT",
     "require": {
