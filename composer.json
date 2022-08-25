@@ -4,6 +4,9 @@
     "description": "API for interacting remotely with Callabra CRM.",
     "homepage": "https://www.callabra.com",
     "license": "MIT",
+    "require": {
+        "php": "^7.0"
+    },    
     "autoload": {
         "psr-4": {
             "Callabra\\": "lib/"
