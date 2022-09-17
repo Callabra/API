@@ -19,7 +19,7 @@ class Invoice extends Api {
 
 	}
 
-	function pastDue(string $id) {
+	public static function pastDue(string $id) {
 
 		self::setModule("invoices");
 		self::setAction("pastDue");
