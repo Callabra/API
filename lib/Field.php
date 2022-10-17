@@ -4,7 +4,7 @@ namespace Callabra;
 
 class Field extends Api {
 
-	function meta($module,$field) {
+	public static function meta($module,$field) {
 
 		self::setModule("fields");
 		self::setAction("meta");
@@ -19,7 +19,7 @@ class Field extends Api {
 
 	}
 
-	function states($country) {
+	public static function states($country) {
 
 		self::setModule("fields");
 		self::setAction("states");
