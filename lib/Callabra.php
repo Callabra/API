@@ -8,7 +8,7 @@ class Api {
 	public static $key;
 	public static $token;
 	public static $test;
-	public static $cache;
+	public static $endpoint;
 
 	public static $module;
 	public static $action;
@@ -18,14 +18,13 @@ class Api {
 	public static function endpoint()
 	{
 
-		if(self::$test == true) {
-			
-			if(self::$cache == true) {
-				$endpoint = "https://cdn.api.test.callabra.com";
-			} else {
-				$endpoint = "https://api.test.callabra.com";
-			}
+		if(self::$endpoint) {
+			$endpoint = self::$endpoint . "/" . self::$module . "/" . self::$action . "/";
+			return $endpoint;
+		}
 
+		if(self::$test == true) {
+			$endpoint = "https://api.test.callabra.com";
 		} else {
 			$endpoint = "https://api.callabra.com";
 		}
@@ -33,6 +32,11 @@ class Api {
 		$endpoint = $endpoint . "/" . self::$module . "/" . self::$action . "/";
 
 		return $endpoint;
+	}
+
+	public static function setEndpoint($endpoint)
+	{
+		self::$endpoint = $endpoint;
 	}
 
 	public static function setInstance($instance)
@@ -54,11 +58,6 @@ class Api {
 	{
 		self::$test = $test;
 	}
-
-	public static function setCacheMode($cache)
-	{
-		self::$cache = $cache;
-	}	
 
 	public static function setModule($module)
 	{
