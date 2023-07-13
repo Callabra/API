@@ -124,11 +124,45 @@ class Api {
 		curl_setopt($ch,CURLOPT_POSTFIELDS, self::encode(self::$parameters));
 
 		//execute post
-		 $result = curl_exec($ch);
+		$result = curl_exec($ch);
+		$curl_error = curl_error($ch);
 
-		 self::$parameters = null; // reset parameters after each send request
+		// check for communication error
+		if($curl_error) {
 
-		 return json_decode($result);
+			$error = new \stdClass();
+
+			$error->endpoint = self::$endpoint;
+			$error->status = 500;
+			$error->error = true;
+			$error->message = 'could not communicate with endpoint';
+
+			return $error;
+		}
+
+		// check for valid response structure
+		$result = json_decode($result);
+		$json_error = json_last_error();
+
+
+		if($json_error) {
+
+			$error = new \stdClass();
+
+			$error->endpoint = self::$endpoint;
+			$error->status = 400;
+			$error->error = true;
+			$error->message = 'invalid response from endpoint';
+
+			return $error;
+
+		} 
+
+		self::$parameters = null; // reset parameters after each send request
+
+		return $result;
+
+		 
 	}
 
 	public static function sendFile($module,$field,$id,$path)
@@ -170,7 +204,6 @@ class Api {
 		//execute post
 		 $result = curl_exec($ch);
 
-		 \Debug::log($result,"curl result");
 
 		 self::$parameters = null; // reset parameters after each send request
 
